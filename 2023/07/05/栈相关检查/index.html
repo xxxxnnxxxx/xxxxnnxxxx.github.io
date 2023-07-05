@@ -28,19 +28,19 @@
 <meta property="og:site_name" content="xxxxnnxxxx">
 <meta property="og:description" content="1. Base Runtime Checks(&#x2F;RTC1 …)在vc开发程序的时候，我们在编译代码的时候，可以设置选项：Base Runtime Checks 如下图所示： Base Runtime Checks 那么什么是基础的运行时检查呢？作用是什么？在这个部分，我们可以查看文档 &#x2F;RTC （运行时错误检查） 在汇编中，我们能看到什么？RTC functions 去掉RTC">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/base-runtime-checks.png">
-<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/RTCfunctions.png">
-<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/no-base-runtime-checks.png">
-<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/ida-no-base-runtime-checks.png">
-<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/buffersecuritycheck.png">
-<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/asm-buffersercuritycheck.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/base-runtime-checks.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/RTCfunctions.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/no-base-runtime-checks.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/ida-no-base-runtime-checks.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/buffersecuritycheck.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/asm-buffersercuritycheck.png">
 <meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/jmc.png">
 <meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/jmc2.png">
 <meta property="article:published_time" content="2023-07-05T01:51:00.000Z">
-<meta property="article:modified_time" content="2023-07-05T01:51:54.819Z">
+<meta property="article:modified_time" content="2023-07-05T01:55:39.605Z">
 <meta property="article:author" content="xxxxnnxxxx">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/base-runtime-checks.png">
+<meta name="twitter:image" content="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/base-runtime-checks.png">
 
 <link rel="canonical" href="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/">
 
@@ -184,7 +184,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-07-05 09:51:00 / Modified: 09:51:54" itemprop="dateCreated datePublished" datetime="2023-07-05T09:51:00+08:00">2023-07-05</time>
+              <time title="Created: 2023-07-05 09:51:00 / Modified: 09:55:39" itemprop="dateCreated datePublished" datetime="2023-07-05T09:51:00+08:00">2023-07-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -208,14 +208,14 @@
 
       
         <h2 id="1-Base-Runtime-Checks-x2F-RTC1-…"><a href="#1-Base-Runtime-Checks-x2F-RTC1-…" class="headerlink" title="1. Base Runtime Checks(&#x2F;RTC1 …)"></a>1. Base Runtime Checks(&#x2F;RTC1 …)</h2><p>在vc开发程序的时候，我们在编译代码的时候，可以设置选项：<code>Base Runtime Checks</code> 如下图所示：</p>
-<p><img src="./base-runtime-checks.png"><br><center>Base Runtime Checks</center></p>
+<p><img src="./栈相关检查/base-runtime-checks.png"><br><center>Base Runtime Checks</center></p>
 <h3 id="那么什么是基础的运行时检查呢？作用是什么？"><a href="#那么什么是基础的运行时检查呢？作用是什么？" class="headerlink" title="那么什么是基础的运行时检查呢？作用是什么？"></a><b>那么什么是基础的运行时检查呢？作用是什么？</b><br></h3><p>在这个部分，我们可以查看文档 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/build/reference/rtc-run-time-error-checks?view=msvc-160">&#x2F;RTC （运行时错误检查）</a></p>
-<h3 id="在汇编中，我们能看到什么？"><a href="#在汇编中，我们能看到什么？" class="headerlink" title="在汇编中，我们能看到什么？"></a><b>在汇编中，我们能看到什么？</b></h3><p><img src="./RTCfunctions.png"><br><center>RTC functions</center></p>
+<h3 id="在汇编中，我们能看到什么？"><a href="#在汇编中，我们能看到什么？" class="headerlink" title="在汇编中，我们能看到什么？"></a><b>在汇编中，我们能看到什么？</b></h3><p><img src="./栈相关检查/RTCfunctions.png"><br><center>RTC functions</center></p>
 <h3 id="去掉RTC检查"><a href="#去掉RTC检查" class="headerlink" title="去掉RTC检查"></a><b>去掉RTC检查</b></h3><p>如下图，在选项中设置 <code>Default</code> 就可以了</p>
-<img src="./no-base-runtime-checks.png">
+<img src="./栈相关检查/no-base-runtime-checks.png">
 
 <p>那么在汇编中，现在的情况是什么呢？</p>
-<p><img src="./ida-no-base-runtime-checks.png"><br></p>
+<p><img src="./栈相关检查/ida-no-base-runtime-checks.png"><br></p>
 <p>我们能看到，已经没有了相关的函数，只有一个初始化和结束的函数</p>
 <h2 id="2-Buffer-Security-Check-x2F-GS"><a href="#2-Buffer-Security-Check-x2F-GS" class="headerlink" title="2. Buffer Security Check(&#x2F;GS)"></a>2. Buffer Security Check(&#x2F;GS)</h2><p>检测一些缓冲区溢出，这些溢出覆盖了函数的返回地址、异常处理程序地址或某些类型的参数。导致缓冲区溢出是黑客用来利用不强制执行缓冲区大小限制的代码的一种技术。</p>
 <h3 id="什么是受保护的？"><a href="#什么是受保护的？" class="headerlink" title="什么是受保护的？"></a><b>什么是受保护的？</b></h3><p>在&#x2F; GS编译器选项保护下列项目：</p>
@@ -249,9 +249,9 @@
 <h3 id="什么不受保护？"><a href="#什么不受保护？" class="headerlink" title="什么不受保护？"></a><b>什么不受保护？</b></h3><p>在&#x2F;GS编译器选项并不能防止所有的缓冲区溢出的安全攻击。例如，如果对象中有一个缓冲区和一个 vtable，则缓冲区溢出可能会损坏 vtable。</p>
 <p>即使您使用&#x2F;GS，也要始终尝试编写没有缓冲区溢出的安全代码。</p>
 <p><i>详细的信息可以查看<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/build/reference/gs-buffer-security-check?view=msvc-160">微软官方文档</a></i></p>
-<h3 id="在汇编中我们能看到什么？"><a href="#在汇编中我们能看到什么？" class="headerlink" title="在汇编中我们能看到什么？"></a><b>在汇编中我们能看到什么？</b></h3><p><img src="./buffersecuritycheck.png"><br><center>Buffer Security Check</center></p>
+<h3 id="在汇编中我们能看到什么？"><a href="#在汇编中我们能看到什么？" class="headerlink" title="在汇编中我们能看到什么？"></a><b>在汇编中我们能看到什么？</b></h3><p><img src="./栈相关检查/buffersecuritycheck.png"><br><center>Buffer Security Check</center></p>
 <h2 id="3-Buffer-Security-Check原理"><a href="#3-Buffer-Security-Check原理" class="headerlink" title="3. Buffer Security Check原理"></a>3. Buffer Security Check原理</h2><p>我们在IDA 中查看反编译汇编代码，如下图：</p>
-<p><img src="./asm-buffersercuritycheck.png"><br/></p>
+<p><img src="./栈相关检查/asm-buffersercuritycheck.png"><br/></p>
 <p>观看以下代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var_4= dword ptr -4</span><br><span class="line"></span><br><span class="line">push    ebp</span><br><span class="line">mov     ebp, esp</span><br><span class="line">sub     esp, 70h</span><br><span class="line">mov     eax, ___security_cookie</span><br><span class="line">xor     eax, ebp</span><br><span class="line">mov     [ebp+var_4], eax</span><br></pre></td></tr></table></figure>
 <p>其中 <code>___security_cookie</code> 是一个固定值,如下：</p>
