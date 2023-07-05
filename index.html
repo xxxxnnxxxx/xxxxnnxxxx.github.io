@@ -171,7 +171,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-07-05 09:51:00 / Modified: 10:00:44" itemprop="dateCreated datePublished" datetime="2023-07-05T09:51:00+08:00">2023-07-05</time>
+              <time title="Created: 2023-07-05 09:51:00 / Modified: 10:07:07" itemprop="dateCreated datePublished" datetime="2023-07-05T09:51:00+08:00">2023-07-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -195,14 +195,13 @@
 
       
           <h2 id="1-Base-Runtime-Checks-x2F-RTC1-…"><a href="#1-Base-Runtime-Checks-x2F-RTC1-…" class="headerlink" title="1. Base Runtime Checks(&#x2F;RTC1 …)"></a>1. Base Runtime Checks(&#x2F;RTC1 …)</h2><p>在vc开发程序的时候，我们在编译代码的时候，可以设置选项：<code>Base Runtime Checks</code> 如下图所示：</p>
-<p><img src="./栈相关检查/base-runtime-checks.png"><br><center>Base Runtime Checks</center></p>
+<p><img src="/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/base-runtime-checks.png" alt="Base Runtime Checks"></p>
 <h3 id="那么什么是基础的运行时检查呢？作用是什么？"><a href="#那么什么是基础的运行时检查呢？作用是什么？" class="headerlink" title="那么什么是基础的运行时检查呢？作用是什么？"></a><b>那么什么是基础的运行时检查呢？作用是什么？</b><br></h3><p>在这个部分，我们可以查看文档 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/build/reference/rtc-run-time-error-checks?view=msvc-160">&#x2F;RTC （运行时错误检查）</a></p>
-<h3 id="在汇编中，我们能看到什么？"><a href="#在汇编中，我们能看到什么？" class="headerlink" title="在汇编中，我们能看到什么？"></a><b>在汇编中，我们能看到什么？</b></h3><p><img src="./栈相关检查/RTCfunctions.png"><br><center>RTC functions</center></p>
+<h3 id="在汇编中，我们能看到什么？"><a href="#在汇编中，我们能看到什么？" class="headerlink" title="在汇编中，我们能看到什么？"></a><b>在汇编中，我们能看到什么？</b></h3><p><img src="/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/RTCfunctions.png" alt="RTC functions"></p>
 <h3 id="去掉RTC检查"><a href="#去掉RTC检查" class="headerlink" title="去掉RTC检查"></a><b>去掉RTC检查</b></h3><p>如下图，在选项中设置 <code>Default</code> 就可以了</p>
-<img src="./栈相关检查/no-base-runtime-checks.png">
-
+<p><img src="/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/no-base-runtime-checks.png"></p>
 <p>那么在汇编中，现在的情况是什么呢？</p>
-<p><img src="./栈相关检查/ida-no-base-runtime-checks.png"><br></p>
+<p><img src="/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/ida-no-base-runtime-checks.png"></p>
 <p>我们能看到，已经没有了相关的函数，只有一个初始化和结束的函数</p>
 <h2 id="2-Buffer-Security-Check-x2F-GS"><a href="#2-Buffer-Security-Check-x2F-GS" class="headerlink" title="2. Buffer Security Check(&#x2F;GS)"></a>2. Buffer Security Check(&#x2F;GS)</h2><p>检测一些缓冲区溢出，这些溢出覆盖了函数的返回地址、异常处理程序地址或某些类型的参数。导致缓冲区溢出是黑客用来利用不强制执行缓冲区大小限制的代码的一种技术。</p>
 <h3 id="什么是受保护的？"><a href="#什么是受保护的？" class="headerlink" title="什么是受保护的？"></a><b>什么是受保护的？</b></h3><p>在&#x2F; GS编译器选项保护下列项目：</p>
