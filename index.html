@@ -146,6 +146,140 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://xxxxnnxxxx.github.io/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xxxxnnxxxx">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xxxxnnxxxx">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/" class="post-title-link" itemprop="url">栈相关检查</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-07-05 09:51:00 / Modified: 09:51:54" itemprop="dateCreated datePublished" datetime="2023-07-05T09:51:00+08:00">2023-07-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/" itemprop="url" rel="index"><span itemprop="name">杂七杂八</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-Base-Runtime-Checks-x2F-RTC1-…"><a href="#1-Base-Runtime-Checks-x2F-RTC1-…" class="headerlink" title="1. Base Runtime Checks(&#x2F;RTC1 …)"></a>1. Base Runtime Checks(&#x2F;RTC1 …)</h2><p>在vc开发程序的时候，我们在编译代码的时候，可以设置选项：<code>Base Runtime Checks</code> 如下图所示：</p>
+<p><img src="./base-runtime-checks.png"><br><center>Base Runtime Checks</center></p>
+<h3 id="那么什么是基础的运行时检查呢？作用是什么？"><a href="#那么什么是基础的运行时检查呢？作用是什么？" class="headerlink" title="那么什么是基础的运行时检查呢？作用是什么？"></a><b>那么什么是基础的运行时检查呢？作用是什么？</b><br></h3><p>在这个部分，我们可以查看文档 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/build/reference/rtc-run-time-error-checks?view=msvc-160">&#x2F;RTC （运行时错误检查）</a></p>
+<h3 id="在汇编中，我们能看到什么？"><a href="#在汇编中，我们能看到什么？" class="headerlink" title="在汇编中，我们能看到什么？"></a><b>在汇编中，我们能看到什么？</b></h3><p><img src="./RTCfunctions.png"><br><center>RTC functions</center></p>
+<h3 id="去掉RTC检查"><a href="#去掉RTC检查" class="headerlink" title="去掉RTC检查"></a><b>去掉RTC检查</b></h3><p>如下图，在选项中设置 <code>Default</code> 就可以了</p>
+<img src="./no-base-runtime-checks.png">
+
+<p>那么在汇编中，现在的情况是什么呢？</p>
+<p><img src="./ida-no-base-runtime-checks.png"><br></p>
+<p>我们能看到，已经没有了相关的函数，只有一个初始化和结束的函数</p>
+<h2 id="2-Buffer-Security-Check-x2F-GS"><a href="#2-Buffer-Security-Check-x2F-GS" class="headerlink" title="2. Buffer Security Check(&#x2F;GS)"></a>2. Buffer Security Check(&#x2F;GS)</h2><p>检测一些缓冲区溢出，这些溢出覆盖了函数的返回地址、异常处理程序地址或某些类型的参数。导致缓冲区溢出是黑客用来利用不强制执行缓冲区大小限制的代码的一种技术。</p>
+<h3 id="什么是受保护的？"><a href="#什么是受保护的？" class="headerlink" title="什么是受保护的？"></a><b>什么是受保护的？</b></h3><p>在&#x2F; GS编译器选项保护下列项目：</p>
+<ul>
+<li><p>函数调用的返回地址。</p>
+</li>
+<li><p>函数的异常处理程序的地址。</p>
+</li>
+<li><p>易受攻击的函数参数。</p>
+</li>
+</ul>
+<p>在所有平台上，&#x2F;GS尝试检测缓冲区溢出到返回地址。缓冲区溢出在 x86 和 x64 等平台上更容易被利用，这些平台使用调用约定将函数调用的返回地址存储在堆栈上。</p>
+<p>在 x86 上，如果函数使用异常处理程序，编译器会注入安全 cookie 以保护异常处理程序的地址。在帧展开期间检查 cookie。</p>
+<p>&#x2F;GS保护传递给函数的易受攻击的参数。易受攻击的参数是指针、C++ 引用、包含指针的 C 结构（C++ POD 类型）或 GS 缓冲区。</p>
+<p>在 cookie 和局部变量之前分配了一个易受攻击的参数。缓冲区溢出可以覆盖这些参数。在函数返回和执行安全检查之前，使用这些参数的函数中的代码可能会导致攻击。为了尽量减少这种危险，编译器在函数 prolog 期间制作了易受攻击的参数的副本，并将它们放在任何缓冲区的存储区域之下。</p>
+<p>在以下情况下，编译器不会复制易受攻击的参数：</p>
+<ul>
+<li><p>不包含 GS 缓冲区的函数。</p>
+</li>
+<li><p>未启用优化（&#x2F;O 选项）。</p>
+</li>
+<li><p>具有可变参数列表 (…) 的函数。</p>
+</li>
+<li><p>标有裸体的函数。</p>
+</li>
+<li><p>在第一条语句中包含内联汇编代码的函数。</p>
+</li>
+<li><p>参数仅以在缓冲区溢出时不太可能被利用的方式使用。</p>
+</li>
+</ul>
+<h3 id="什么不受保护？"><a href="#什么不受保护？" class="headerlink" title="什么不受保护？"></a><b>什么不受保护？</b></h3><p>在&#x2F;GS编译器选项并不能防止所有的缓冲区溢出的安全攻击。例如，如果对象中有一个缓冲区和一个 vtable，则缓冲区溢出可能会损坏 vtable。</p>
+<p>即使您使用&#x2F;GS，也要始终尝试编写没有缓冲区溢出的安全代码。</p>
+<p><i>详细的信息可以查看<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/build/reference/gs-buffer-security-check?view=msvc-160">微软官方文档</a></i></p>
+<h3 id="在汇编中我们能看到什么？"><a href="#在汇编中我们能看到什么？" class="headerlink" title="在汇编中我们能看到什么？"></a><b>在汇编中我们能看到什么？</b></h3><p><img src="./buffersecuritycheck.png"><br><center>Buffer Security Check</center></p>
+<h2 id="3-Buffer-Security-Check原理"><a href="#3-Buffer-Security-Check原理" class="headerlink" title="3. Buffer Security Check原理"></a>3. Buffer Security Check原理</h2><p>我们在IDA 中查看反编译汇编代码，如下图：</p>
+<p><img src="./asm-buffersercuritycheck.png"><br/></p>
+<p>观看以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var_4= dword ptr -4</span><br><span class="line"></span><br><span class="line">push    ebp</span><br><span class="line">mov     ebp, esp</span><br><span class="line">sub     esp, 70h</span><br><span class="line">mov     eax, ___security_cookie</span><br><span class="line">xor     eax, ebp</span><br><span class="line">mov     [ebp+var_4], eax</span><br></pre></td></tr></table></figure>
+<p>其中 <code>___security_cookie</code> 是一个固定值,如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">___security_cookie dd 0BB40E64Eh</span><br></pre></td></tr></table></figure>
+
+<p>在函数结束位置，我们看到如下汇编：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov     ecx, [ebp+var_4]</span><br><span class="line">xor     ecx, ebp        ; cookie</span><br><span class="line">call    j_@__security_check_cookie@4 ; __security_check_cookie(x)</span><br></pre></td></tr></table></figure>
+<p>我们查看 <code>__security_check_cookie(x)</code> 函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">; void __fastcall __security_check_cookie(unsigned int cookie)</span><br><span class="line">.text:00411310 @__security_check_cookie@4 proc near    ; CODE XREF: __security_check_cookie(x)j</span><br><span class="line">.text:00411310</span><br><span class="line">.text:00411310 cookie          = dword ptr -4</span><br><span class="line">.text:00411310</span><br><span class="line">.text:00411310                 cmp     ecx, ___security_cookie</span><br><span class="line">.text:00411316                 jnz     short failure</span><br><span class="line">.text:00411318                 rep retn</span><br><span class="line">.text:0041131A ; ---------------------------------------------------------------------------</span><br><span class="line">.text:0041131A</span><br><span class="line">.text:0041131A failure:                                ; CODE XREF: __security_check_cookie(x)+6j</span><br><span class="line">.text:0041131A                 jmp     j____report_gsfailure</span><br><span class="line">.text:0041131A @__security_check_cookie@4 endp</span><br></pre></td></tr></table></figure>
+
+<p>我们比较上面的内容发现，如果在使用过程中，变量改变了，那么就出现错误。所以这样就保证了缓存区溢出造成的漏洞。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li>目录projects 下有功能 test_safeSEH 和 testc_bufcheck</li>
+</ol>
+<h2 id="3-x2F-JMC-CheckForDebuggerJustMyCode-4-选项"><a href="#3-x2F-JMC-CheckForDebuggerJustMyCode-4-选项" class="headerlink" title="3. &#x2F;JMC (@__CheckForDebuggerJustMyCode@4) 选项"></a>3. &#x2F;JMC (@__CheckForDebuggerJustMyCode@4) 选项</h2><p>微软官方文档：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/cpp/build/reference/jmc?view=msvc-170">https://learn.microsoft.com/en-us/cpp/build/reference/jmc?view=msvc-170</a></p>
+<p>指定编译器支持 Visual Studio 调试器中的本机 Just My Code 调试。此选项支持允许 Visual Studio 跨过系统、框架、库和其他非用户调用并在调用堆栈窗口中折叠这些调用的用户设置。 &#x2F;JMC 编译器选项从 Visual Studio 2017 版本 15.8 开始可用。</p>
+<p>选项位置：</p>
+<p><img src="/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/jmc.png"></p>
+<p>启用 &#x2F;JMC 时，编译器会在函数序言中插入对辅助函数 <code>__CheckForDebuggerJustMyCode</code> 的调用。帮助函数提供支持 Visual Studio 调试器 Just My Code 步骤操作的挂钩。</p>
+<p>如果启用了 <code>/JMC</code> 通过反汇编，可以查看如下代码：</p>
+<p><img src="/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/jmc2.png"></p>
+<p>启用 <code>/JMC</code> 选项后，PDB 文件会使用额外的行号信息进行注释。在 Visual Studio 2019 版本 16.8 之前的版本中，此信息可能会出现在代码覆盖率报告中，出现在第 15732480 (0xF00F00) 行或 16707566 (0xFEEFEE) 行。这些虚构的行号用作区分用户代码和非用户代码的标记。要在没有这些意外行号的情况下在代码覆盖率报告中包含非用户代码，请使用 <code>/JMC-</code> 选项构建您的代码。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://xxxxnnxxxx.github.io/2023/07/04/CVE-2023-21768/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -434,7 +568,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
