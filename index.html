@@ -171,7 +171,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-07-05 09:51:00 / Modified: 09:55:39" itemprop="dateCreated datePublished" datetime="2023-07-05T09:51:00+08:00">2023-07-05</time>
+              <time title="Created: 2023-07-05 09:51:00 / Modified: 10:00:44" itemprop="dateCreated datePublished" datetime="2023-07-05T09:51:00+08:00">2023-07-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,9 +236,9 @@
 <h3 id="什么不受保护？"><a href="#什么不受保护？" class="headerlink" title="什么不受保护？"></a><b>什么不受保护？</b></h3><p>在&#x2F;GS编译器选项并不能防止所有的缓冲区溢出的安全攻击。例如，如果对象中有一个缓冲区和一个 vtable，则缓冲区溢出可能会损坏 vtable。</p>
 <p>即使您使用&#x2F;GS，也要始终尝试编写没有缓冲区溢出的安全代码。</p>
 <p><i>详细的信息可以查看<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cpp/build/reference/gs-buffer-security-check?view=msvc-160">微软官方文档</a></i></p>
-<h3 id="在汇编中我们能看到什么？"><a href="#在汇编中我们能看到什么？" class="headerlink" title="在汇编中我们能看到什么？"></a><b>在汇编中我们能看到什么？</b></h3><p><img src="./栈相关检查/buffersecuritycheck.png"><br><center>Buffer Security Check</center></p>
+<h3 id="在汇编中我们能看到什么？"><a href="#在汇编中我们能看到什么？" class="headerlink" title="在汇编中我们能看到什么？"></a><b>在汇编中我们能看到什么？</b></h3><p><img src="/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/buffersecuritycheck.png" alt="Buffer Security Check"></p>
 <h2 id="3-Buffer-Security-Check原理"><a href="#3-Buffer-Security-Check原理" class="headerlink" title="3. Buffer Security Check原理"></a>3. Buffer Security Check原理</h2><p>我们在IDA 中查看反编译汇编代码，如下图：</p>
-<p><img src="./栈相关检查/asm-buffersercuritycheck.png"><br/></p>
+<p><img src="/2023/07/05/%E6%A0%88%E7%9B%B8%E5%85%B3%E6%A3%80%E6%9F%A5/asm-buffersercuritycheck.png"></p>
 <p>观看以下代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var_4= dword ptr -4</span><br><span class="line"></span><br><span class="line">push    ebp</span><br><span class="line">mov     ebp, esp</span><br><span class="line">sub     esp, 70h</span><br><span class="line">mov     eax, ___security_cookie</span><br><span class="line">xor     eax, ebp</span><br><span class="line">mov     [ebp+var_4], eax</span><br></pre></td></tr></table></figure>
 <p>其中 <code>___security_cookie</code> 是一个固定值,如下：</p>
