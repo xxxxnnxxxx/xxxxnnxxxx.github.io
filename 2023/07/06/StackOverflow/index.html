@@ -1,0 +1,727 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/images/favicon-48.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xxxxnnxxxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="栈溢出分析, 比较入门，通过简单的示例进行说明">
+<meta property="og:type" content="article">
+<meta property="og:title" content="StackOverflow">
+<meta property="og:url" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/index.html">
+<meta property="og:site_name" content="xxxxnnxxxx">
+<meta property="og:description" content="栈溢出分析, 比较入门，通过简单的示例进行说明">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/c_compiler.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/rtc.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/stack_check.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/jmc.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/call_foo.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/addressoffunctions.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/foo_function.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/stack_foo.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/address_buf.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/address_buf_value.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/stack_foo.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/finish_strcpy.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/stack_finish_strcpy.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/addressofbar.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/finish_strcpy_2.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/ret_operation.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/finish_strcpy_2.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/bar_function.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/bar_output.png">
+<meta property="article:published_time" content="2023-07-06T14:54:00.000Z">
+<meta property="article:modified_time" content="2023-07-06T14:55:31.842Z">
+<meta property="article:author" content="xxxxnnxxxx">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/c_compiler.png">
+  
+  
+  
+    <meta name="google-site-verification" content="Z6SsvW3r4WIkFz1e9zkKO2f0hFIouf3dUGoW4PNdvnI" />
+  
+  <title>StackOverflow - xxxxnnxxxx</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xxxxnnxxxx.github.io","root":"/","version":"1.9.5-a","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xxxxnnxxxx</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">StackOverflow</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-07-06 22:54" pubdate>
+          2023年7月6日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          51 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">StackOverflow</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <style>
+.highlight {
+    background-color:#ecec73; 
+    color:#266ad7;
+}
+</style>
+
+<p>本篇文章主要是手动分析栈的溢出情况，并且去掉了相关的检查代码，我们下面就是通过简单的示例，来分析整个流程，首先看代码如下：</p>
+<p>代码文件为：<code>test_stack.c</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span><br><span class="hljs-comment">//by MoreWindows</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;windows.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;conio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;process.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">foo</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* input)</span><br>&#123;<br>	<span class="hljs-type">char</span> buf[<span class="hljs-number">4</span>]; <span class="hljs-comment">//buf 占4字节，后4字节为ebp，再后4个字节为返回地址。</span><br>	<span class="hljs-built_in">strcpy</span>(buf, input); <span class="hljs-comment">//传入的字符串去覆盖返回地址，从而使用程序执行bar()函数</span><br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">bar</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Augh! This program have been hacked by MoreWindows!\n&quot;</span>);<br>	_getch();<br>	<span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<span class="hljs-comment">//由于这时的ebp已经破坏了, 所以在这直接退出程序. 不然会弹出错误对话框</span><br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span>* argv[])</span><br>&#123;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Address of main = %p\n&quot;</span>, main);<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Address of foo = %p\n&quot;</span>, foo);<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Address of bar = %p\n&quot;</span>, bar);<br><br>	<span class="hljs-comment">//构造字符串，前8个填充字符，再跟一个bar()函数的地址。</span><br>	<span class="hljs-type">char</span> szbuf[<span class="hljs-number">50</span>] = <span class="hljs-string">&quot;12341234&quot;</span>;<br>	DWORD* pbarAddress = (DWORD*)&amp;szbuf[<span class="hljs-number">8</span>];<br>	*pbarAddress = (DWORD)bar;<br><br>	foo(szbuf);<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="1-准备编译环境"><a href="#1-准备编译环境" class="headerlink" title="1. 准备编译环境"></a><strong>1. 准备编译环境</strong></h2><ul>
+<li>visual studio 2019 </li>
+<li>Debug&#x2F;x86</li>
+<li>使用C编译器编译</li>
+<li>去掉栈检查,JMC等</li>
+</ul>
+<h3 id="1-配置"><a href="#1-配置" class="headerlink" title="1. 配置"></a><strong>1. 配置</strong></h3><p><span class="highlight">指定C编译器：</span></p>
+<p><img src="/2023/07/06/StackOverflow/c_compiler.png" srcset="/img/loading.gif" lazyload></p>
+<p><span class="highlight">去掉基本运行时检查</span></p>
+<p><img src="/2023/07/06/StackOverflow/rtc.png" srcset="/img/loading.gif" lazyload></p>
+<p>具体的rtc检查，生成的函数，可以参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/magictong/article/details/6306820">https://blog.csdn.net/magictong/article/details/6306820</a></p>
+<p><span class="highlight">去掉缓冲区检查</span></p>
+<p><img src="/2023/07/06/StackOverflow/stack_check.png" srcset="/img/loading.gif" lazyload></p>
+<p>去掉整个作用就是去掉我们在反汇编中经常能看到的函数：<code>___security_cookie</code></p>
+<p><span class="highlight">去掉JMC选项</span></p>
+<p><img src="/2023/07/06/StackOverflow/jmc.png" srcset="/img/loading.gif" lazyload></p>
+<p>JMC选项一个Debug调试过程中的对于PDB文件的一种修饰，可以查看文章：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/cpp/build/reference/jmc?view=msvc-170">https://learn.microsoft.com/en-us/cpp/build/reference/jmc?view=msvc-170</a></p>
+<p>上面的配置都完成之后，我们就可以生成程序了，然后调试程序，就可以看见反汇编结果。</p>
+<h2 id="2-反汇编并调试"><a href="#2-反汇编并调试" class="headerlink" title="2. 反汇编并调试"></a><strong>2. 反汇编并调试</strong></h2><p>调试过程中的反汇编结果：</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-comment">; ----------------------main主函数---------------------------</span><br><br><span class="hljs-keyword">int</span> main(<span class="hljs-keyword">int</span> argc, char* argv[])<br>&#123;<br>005B1920  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">ebp</span>  <br>005B1921  <span class="hljs-keyword">mov</span>         <span class="hljs-built_in">ebp</span>,<span class="hljs-built_in">esp</span>  <br>005B1923  <span class="hljs-keyword">sub</span>         <span class="hljs-built_in">esp</span>,<span class="hljs-number">78h</span>  <br>005B1926  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">ebx</span>  <br>005B1927  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">esi</span>  <br>005B1928  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">edi</span>  <br>	printf(<span class="hljs-string">&quot;Address of main = %p\n&quot;</span>, main)<span class="hljs-comment">;</span><br>005B1929  <span class="hljs-keyword">push</span>        offset _main (<span class="hljs-number">05B12DFh</span>)  <br>005B192E  <span class="hljs-keyword">push</span>        offset string <span class="hljs-string">&quot;Address of main = %p\n&quot;</span> (<span class="hljs-number">05B7B70h</span>)  <br>005B1933  <span class="hljs-keyword">call</span>        _printf (<span class="hljs-number">05B10CDh</span>)  <br>005B1938  <span class="hljs-keyword">add</span>         <span class="hljs-built_in">esp</span>,<span class="hljs-number">8</span>  <br>	printf(<span class="hljs-string">&quot;Address of foo = %p\n&quot;</span>, foo)<span class="hljs-comment">;</span><br>005B193B  <span class="hljs-keyword">push</span>        offset _foo (<span class="hljs-number">05B127Bh</span>)  <br>005B1940  <span class="hljs-keyword">push</span>        offset string <span class="hljs-string">&quot;Address of foo = %p\n&quot;</span> (<span class="hljs-number">05B7B8Ch</span>)  <br>005B1945  <span class="hljs-keyword">call</span>        _printf (<span class="hljs-number">05B10CDh</span>)  <br>005B194A  <span class="hljs-keyword">add</span>         <span class="hljs-built_in">esp</span>,<span class="hljs-number">8</span>  <br>	printf(<span class="hljs-string">&quot;Address of bar = %p\n&quot;</span>, bar)<span class="hljs-comment">;</span><br>005B194D  <span class="hljs-keyword">push</span>        offset _bar (<span class="hljs-number">05B11F9h</span>)  <br>005B1952  <span class="hljs-keyword">push</span>        offset string <span class="hljs-string">&quot;Address of bar = %p\n&quot;</span> (<span class="hljs-number">05B7BA8h</span>)  <br>005B1957  <span class="hljs-keyword">call</span>        _printf (<span class="hljs-number">05B10CDh</span>)  <br>005B195C  <span class="hljs-keyword">add</span>         <span class="hljs-built_in">esp</span>,<span class="hljs-number">8</span>  <br><br>	//构造字符串，前<span class="hljs-number">8</span>个填充字符，再跟一个bar()函数的地址。<br>	char szbuf[<span class="hljs-number">50</span>] = <span class="hljs-string">&quot;12341234&quot;</span><span class="hljs-comment">;</span><br>005B195F  <span class="hljs-keyword">mov</span>         <span class="hljs-built_in">eax</span>,<span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> [string <span class="hljs-string">&quot;12341234&quot;</span> (<span class="hljs-number">05B7BC4h</span>)]  <br>005B1964  <span class="hljs-keyword">mov</span>         <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> [szbuf],<span class="hljs-built_in">eax</span>  <br>005B1967  <span class="hljs-keyword">mov</span>         <span class="hljs-built_in">ecx</span>,<span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> <span class="hljs-built_in">ds</span>:[<span class="hljs-number">5B7BC8h</span>]  <br>005B196D  <span class="hljs-keyword">mov</span>         <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> [<span class="hljs-built_in">ebp</span>-<span class="hljs-number">30h</span>],<span class="hljs-built_in">ecx</span>  <br>005B1970  <span class="hljs-keyword">mov</span>         <span class="hljs-built_in">dl</span>,<span class="hljs-built_in">byte</span> <span class="hljs-built_in">ptr</span> <span class="hljs-built_in">ds</span>:[<span class="hljs-number">5B7BCCh</span>]  <br>005B1976  <span class="hljs-keyword">mov</span>         <span class="hljs-built_in">byte</span> <span class="hljs-built_in">ptr</span> [<span class="hljs-built_in">ebp</span>-<span class="hljs-number">2Ch</span>],<span class="hljs-built_in">dl</span>  <br>005B1979  <span class="hljs-keyword">push</span>        <span class="hljs-number">29h</span>  <br>005B197B  <span class="hljs-keyword">push</span>        <span class="hljs-number">0</span>  <br>005B197D  <span class="hljs-keyword">lea</span>         <span class="hljs-built_in">eax</span>,[<span class="hljs-built_in">ebp</span>-<span class="hljs-number">2Bh</span>]  <br>005B1980  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">eax</span>  <br>005B1981  <span class="hljs-keyword">call</span>        _memset (<span class="hljs-number">05B114Fh</span>)  <br>005B1986  <span class="hljs-keyword">add</span>         <span class="hljs-built_in">esp</span>,<span class="hljs-number">0Ch</span>  <br>	<span class="hljs-built_in">DWORD</span>* pbarAddress = (<span class="hljs-built_in">DWORD</span>*)&amp;szbuf[<span class="hljs-number">8</span>]<span class="hljs-comment">;</span><br>005B1989  <span class="hljs-keyword">mov</span>         <span class="hljs-built_in">eax</span>,<span class="hljs-number">1</span>  <br>005B198E  <span class="hljs-keyword">shl</span>         <span class="hljs-built_in">eax</span>,<span class="hljs-number">3</span>  <br>005B1991  <span class="hljs-keyword">lea</span>         <span class="hljs-built_in">ecx</span>,szbuf[<span class="hljs-built_in">eax</span>]  <br>005B1995  <span class="hljs-keyword">mov</span>         <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> [pbarAddress],<span class="hljs-built_in">ecx</span>  <br>	*pbarAddress = (<span class="hljs-built_in">DWORD</span>)bar<span class="hljs-comment">;</span><br>005B1998  <span class="hljs-keyword">mov</span>         <span class="hljs-built_in">eax</span>,<span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> [pbarAddress]  <br>005B199B  <span class="hljs-keyword">mov</span>         <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> [<span class="hljs-built_in">eax</span>],offset _bar (<span class="hljs-number">05B11F9h</span>)  <br><br>	foo(szbuf)<span class="hljs-comment">;</span><br>005B19A1  <span class="hljs-keyword">lea</span>         <span class="hljs-built_in">eax</span>,[szbuf]  <br>005B19A4  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">eax</span>  <br>005B19A5  <span class="hljs-keyword">call</span>        _foo (<span class="hljs-number">05B127Bh</span>)  <span class="hljs-comment">; -------------------- ①</span><br>005B19AA  <span class="hljs-keyword">add</span>         <span class="hljs-built_in">esp</span>,<span class="hljs-number">4</span>  <span class="hljs-comment">; ------------------------------ ②</span><br><br>	return <span class="hljs-number">0</span><span class="hljs-comment">;</span><br>005B19AD  <span class="hljs-keyword">xor</span>         <span class="hljs-built_in">eax</span>,<span class="hljs-built_in">eax</span>  <br>&#125;<br><br><span class="hljs-comment">;---------------------foo函数------------------------------</span><br><br>void foo(const char* input)<br>&#123;<br>005B1880  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">ebp</span>  <br>005B1881  <span class="hljs-keyword">mov</span>         <span class="hljs-built_in">ebp</span>,<span class="hljs-built_in">esp</span>  <br>005B1883  <span class="hljs-keyword">sub</span>         <span class="hljs-built_in">esp</span>,<span class="hljs-number">44h</span>  <br>005B1886  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">ebx</span>  <br>005B1887  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">esi</span>  <br>005B1888  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">edi</span>  <br>	char buf[<span class="hljs-number">4</span>]<span class="hljs-comment">; //buf 占4字节，后4字节为ebp，再后4个字节为返回地址。</span><br>	strcpy(buf, input)<span class="hljs-comment">; //传入的字符串去覆盖返回地址，从而使用程序执行bar()函数</span><br>005B1889  <span class="hljs-keyword">mov</span>         <span class="hljs-built_in">eax</span>,<span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> [input]  <br>005B188C  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">eax</span>  <br>005B188D  <span class="hljs-keyword">lea</span>         <span class="hljs-built_in">ecx</span>,[buf]  <span class="hljs-comment">; ------------------------- ③</span><br>005B1890  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">ecx</span>  <br>005B1891  <span class="hljs-keyword">call</span>        _strcpy (<span class="hljs-number">05B120Dh</span>)  <br>005B1896  <span class="hljs-keyword">add</span>         <span class="hljs-built_in">esp</span>,<span class="hljs-number">8</span>  <br>&#125;<br><br><span class="hljs-comment">; --------------------bar函数----------------------------</span><br><br>void bar(void)<br>&#123;<br>005B1810  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">ebp</span>  <br>005B1811  <span class="hljs-keyword">mov</span>         <span class="hljs-built_in">ebp</span>,<span class="hljs-built_in">esp</span>  <br>005B1813  <span class="hljs-keyword">sub</span>         <span class="hljs-built_in">esp</span>,<span class="hljs-number">40h</span>  <br>005B1816  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">ebx</span>  <br>005B1817  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">esi</span>  <br>005B1818  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">edi</span>  <br>	printf(<span class="hljs-string">&quot;Augh! This program have been hacked by MoreWindows!\n&quot;</span>)<span class="hljs-comment">;</span><br>005B1819  <span class="hljs-keyword">push</span>        offset string <span class="hljs-string">&quot;Augh! This program have been ha@&quot;</span>... (<span class="hljs-number">05B7B30h</span>)  <br>005B181E  <span class="hljs-keyword">call</span>        _printf (<span class="hljs-number">05B10CDh</span>)  <br>005B1823  <span class="hljs-keyword">add</span>         <span class="hljs-built_in">esp</span>,<span class="hljs-number">4</span>  <br>	_getch()<span class="hljs-comment">;</span><br>005B1826  <span class="hljs-keyword">call</span>        <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> [__imp___getch (<span class="hljs-number">05BB174h</span>)]  <br>	exit(<span class="hljs-number">0</span>)<span class="hljs-comment">;//由于这时的ebp已经破坏了, 所以在这直接退出程序. 不然会弹出错误对话框</span><br>005B182C  <span class="hljs-keyword">push</span>        <span class="hljs-number">0</span>  <br>005B182E  <span class="hljs-keyword">call</span>        <span class="hljs-built_in">dword</span> <span class="hljs-built_in">ptr</span> [__imp__exit (<span class="hljs-number">05BB178h</span>)]  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>分析：</p>
+<p>我们运行程序到调用 <code>foo</code> 函数， 如下图：</p>
+<p><img src="/2023/07/06/StackOverflow/call_foo.png" srcset="/img/loading.gif" lazyload></p>
+<p>暂时的输出如下：</p>
+<p><img src="/2023/07/06/StackOverflow/addressoffunctions.png" srcset="/img/loading.gif" lazyload></p>
+<p>通过上图，我们要记住一点，调用 <code>foo</code> 函数后面的地址，这个是汇编 <code>call _foo</code> 的返回地址，第一张图 <code>①</code> 的位置： <code>005B19AA  add esp,4</code>。 </p>
+<p>我们运行程序，进去到 <code>foo</code> 函数，如下图：</p>
+<p><img src="/2023/07/06/StackOverflow/foo_function.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们通过查看 <code>esp</code> 寄存器，查看栈中的数据：</p>
+<p><img src="/2023/07/06/StackOverflow/stack_foo.png" srcset="/img/loading.gif" lazyload></p>
+<p>能看到 <code>esp</code> 地址的数据的第一值是 <code>aa 19 5b 00</code> 也就是 <code>005b19aa</code> 这个地址就是我们上面看到的 <code>call _foo</code> 函数的下一个地址，也就是 <code>call</code> 之后，压入栈的返回地址。</p>
+<p>我们继续运行程序，我们要获取<code>buf</code>变量的位置，因为是局部变量，本身变量存在于栈中，下图：</p>
+<p><img src="/2023/07/06/StackOverflow/address_buf.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们获取到的 <code>ecx</code> 寄存的值就是 <code>buf</code> 的缓冲区地址：<code>008FF710</code></p>
+<p><img src="/2023/07/06/StackOverflow/address_buf_value.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们通过上面，知道 <code>①</code> 的位置就是返回地址的位置：<code>0x008FF718  aa 19 5b 00 ?.[.</code></p>
+<p><img src="/2023/07/06/StackOverflow/stack_foo.png" srcset="/img/loading.gif" lazyload></p>
+<p>而 <code>②</code> 的位置就是 <code>buf</code> 缓存区位置：<code>0x008FF710</code>, 其中的值是随意填充的，没有影响。</p>
+<p>我们继续运行程序，如下图：</p>
+<p><img src="/2023/07/06/StackOverflow/finish_strcpy.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们完成了 <code>strcpy</code> 函数的执行，然后观察现在 <code>buf</code> 的位置的数值情况，如下图：</p>
+<p><img src="/2023/07/06/StackOverflow/stack_finish_strcpy.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们看到 <code>buf</code> 地址的位置已经背填充了值，本身的程序代码是这样的：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//构造字符串，前8个填充字符，再跟一个bar()函数的地址。</span><br><span class="hljs-type">char</span> szbuf[<span class="hljs-number">50</span>] = <span class="hljs-string">&quot;12341234&quot;</span>;<br>DWORD* pbarAddress = (DWORD*)&amp;szbuf[<span class="hljs-number">8</span>];<br>*pbarAddress = (DWORD)bar;<br><br>foo(szbuf);<br></code></pre></td></tr></table></figure>
+
+<p>buf 本身填充的数据有两个部分组成，一个是字符数据：<code>&quot;12341234&quot;</code>, 一个是 <code>bar</code> 函数的地址，这个地址我们通过最上面的输出，可以看到如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Address of main = %p\n&quot;</span>, main);<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Address of foo = %p\n&quot;</span>, foo);<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Address of bar = %p\n&quot;</span>, bar);<br></code></pre></td></tr></table></figure>
+<p><img src="/2023/07/06/StackOverflow/addressofbar.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们继续看上面的执行完成后的内存栈图，</p>
+<p><img src="/2023/07/06/StackOverflow/finish_strcpy_2.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意观察这三个地址：<code>0x008FF718</code>, <code>0x008FF714</code>, <code>0x008FF710</code></p>
+<ul>
+<li><p><code>0x008FF710</code>: buf的位置</p>
+</li>
+<li><p><code>0x008FF714</code>: ?</p>
+</li>
+<li><p><code>0x008FF718</code>: 存放调用函数foo的返回地址（可以查看上面的说明）不过这个地址目前已经被 <code>bar</code> 的函数地址覆盖了：<code>f9 11 5b 00</code></p>
+</li>
+</ul>
+<p>第2个地址：<code>0x008FF714</code> 是什么呢？ 在 <code>buf</code> 和 返回地址之间这个压入栈的数据是什么呢？其实也是很好理解，我们从 <code>foo</code> 函数的汇编就可以看出来，如下：</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs x86asm">void foo(const char* input)<br>&#123;<br>005B1880  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">ebp</span>  <span class="hljs-comment">; ------------ 压入ebp</span><br>005B1881  <span class="hljs-keyword">mov</span>         <span class="hljs-built_in">ebp</span>,<span class="hljs-built_in">esp</span>  <br>005B1883  <span class="hljs-keyword">sub</span>         <span class="hljs-built_in">esp</span>,<span class="hljs-number">44h</span>  <br>005B1886  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">ebx</span>  <br>005B1887  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">esi</span>  <br>005B1888  <span class="hljs-keyword">push</span>        <span class="hljs-built_in">edi</span><br></code></pre></td></tr></table></figure>
+<p>其实这个地方就是 <code>push ebp</code> 的操作。所以在返回地址和buf之间的位置。</p>
+<p>那么我们继续执行，看看会出现什么效果？</p>
+<p>首先执行到 <code>foo</code> 函数的最后，如下：</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs x86asm">005B1891  <span class="hljs-keyword">call</span>        _strcpy (<span class="hljs-number">05B120Dh</span>)  <br>005B1896  <span class="hljs-keyword">add</span>         <span class="hljs-built_in">esp</span>,<span class="hljs-number">8</span>  <br>&#125;<br>005B1899  <span class="hljs-keyword">pop</span>         <span class="hljs-built_in">edi</span>  <br>005B189A  <span class="hljs-keyword">pop</span>         <span class="hljs-built_in">esi</span>  <br>005B189B  <span class="hljs-keyword">pop</span>         <span class="hljs-built_in">ebx</span>  <br>005B189C  <span class="hljs-keyword">mov</span>         <span class="hljs-built_in">esp</span>,<span class="hljs-built_in">ebp</span>  <br>005B189E  <span class="hljs-keyword">pop</span>         <span class="hljs-built_in">ebp</span>  <br>005B189F  <span class="hljs-keyword">ret</span>   <span class="hljs-comment">; ------------------ ret 返回函数</span><br></code></pre></td></tr></table></figure>
+<p>我们查看 <code>ret</code> 汇编指令的说明（Intel IA-32文档):</p>
+<p><img src="/2023/07/06/StackOverflow/ret_operation.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为是32位程序，所以 <code>ret</code> 执行指令最终执行后是：<code>EIP ← Pop();</code> 说明会把栈返回的数据返回给 <code>EIP</code> 寄存器，这个也就是代码执行的下一个执行存储的寄存器。</p>
+<p>因为上面已经说明了， 把返回地址修改为了 <code>bar</code> 函数的地址：<code>0x008FF718 f9 11 5b 00</code></p>
+<p><img src="/2023/07/06/StackOverflow/finish_strcpy_2.png" srcset="/img/loading.gif" lazyload></p>
+<p>那么 <code>foo</code> 返回后，也就是要执行 <code>bar</code> 函数了，这个也是能看到的确实是执行了 <code>bar</code> 函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">bar</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Augh! This program have been hacked by MoreWindows!\n&quot;</span>);<br>	_getch();<br>	<span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<span class="hljs-comment">//由于这时的ebp已经破坏了, 所以在这直接退出程序. 不然会弹出错误对话框</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="/2023/07/06/StackOverflow/bar_function.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们继续执行，看看能不能输出 <code>printf</code> 函数，如下图：</p>
+<p><img src="/2023/07/06/StackOverflow/bar_output.png" srcset="/img/loading.gif" lazyload></p>
+<p>已经看到了，确实执行了, 并输出了信息。</p>
+<h2 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a><strong>3. 总结</strong></h2><p>我们通过上面的分析，就是一个完整的栈溢出漏洞的程序执行过程， 但要注意，我们去掉的几乎所有的栈检查和运行时检查，这里只是做为一个演示，观察怎么通过溢出覆盖了返回地址的。后续的文档，我们还会基于这个文章，做payload的分析工作，通过输出的方式弹出对话框。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/" class="category-chain-item">杂七杂八</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>StackOverflow</div>
+      <div>https://xxxxnnxxxx.github.io/2023/07/06/StackOverflow/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xxxxnnxxxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年7月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/07/06/Windows%20%E8%A1%A5%E4%B8%81%E7%9A%84%E6%8F%90%E5%8F%96%E5%92%8C%E6%AF%94%E8%BE%83/" title="Windows 补丁的提取和比较">
+                        <span class="hidden-mobile">Windows 补丁的提取和比较</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
