@@ -16,12 +16,12 @@
   <meta name="author" content="xxxxnnxxxx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="原文：Extracting and Diffing Windows Patches in 2020      .highlight {         background-color: rgba(255,255,0, 0.5);     }   我已经有一段时间没有在这里发布任何东西了！毕竟，个人博客除了多年来被忽视之外还有什么用；） 不管怎样，我在教授 SANS SEC760 时一直在运行这个">
+    <meta name="description" content="翻译文章，非常不错的关于比较 Windows补丁的文章，主要是怎么获取补丁文件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows 补丁的提取和比较">
 <meta property="og:url" content="https://xxxxnnxxxx.github.io/2023/07/06/Windows%20%E8%A1%A5%E4%B8%81%E7%9A%84%E6%8F%90%E5%8F%96%E5%92%8C%E6%AF%94%E8%BE%83/index.html">
 <meta property="og:site_name" content="xxxxnnxxxx">
-<meta property="og:description" content="原文：Extracting and Diffing Windows Patches in 2020      .highlight {         background-color: rgba(255,255,0, 0.5);     }   我已经有一段时间没有在这里发布任何东西了！毕竟，个人博客除了多年来被忽视之外还有什么用；） 不管怎样，我在教授 SANS SEC760 时一直在运行这个">
+<meta property="og:description" content="翻译文章，非常不错的关于比较 Windows补丁的文章，主要是怎么获取补丁文件">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/Windows%20%E8%A1%A5%E4%B8%81%E7%9A%84%E6%8F%90%E5%8F%96%E5%92%8C%E6%AF%94%E8%BE%83/msupdate-search.png">
 <meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/Windows%20%E8%A1%A5%E4%B8%81%E7%9A%84%E6%8F%90%E5%8F%96%E5%92%8C%E6%AF%94%E8%BE%83/msupdate-variations.png">
@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/Windows%20%E8%A1%A5%E4%B8%81%E7%9A%84%E6%8F%90%E5%8F%96%E5%92%8C%E6%AF%94%E8%BE%83/bindiff-overview.png">
 <meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/07/06/Windows%20%E8%A1%A5%E4%B8%81%E7%9A%84%E6%8F%90%E5%8F%96%E5%92%8C%E6%AF%94%E8%BE%83/bindiff-changed-block.png">
 <meta property="article:published_time" content="2023-07-06T14:28:00.000Z">
-<meta property="article:modified_time" content="2023-07-06T14:28:12.947Z">
+<meta property="article:modified_time" content="2023-07-06T14:46:18.654Z">
 <meta property="article:author" content="xxxxnnxxxx">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://xxxxnnxxxx.github.io/2023/07/06/Windows%20%E8%A1%A5%E4%B8%81%E7%9A%84%E6%8F%90%E5%8F%96%E5%92%8C%E6%AF%94%E8%BE%83/msupdate-search.png">
