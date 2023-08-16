@@ -16,27 +16,29 @@
   <meta name="author" content="xxxxnnxxxx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="PlayStation开发第一篇，主要是介绍如何搭建开发环境">
+    <meta name="description" content="简单的一个.Net的程序反编译与编译过程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PlayStation 开发 - 设置和安装 PSY-Q">
-<meta property="og:url" content="https://xxxxnnxxxx.github.io/2023/08/04/PlayStation%20%E5%BC%80%E5%8F%91%20-%20%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%AE%89%E8%A3%85%20PSY-Q/index.html">
+<meta property="og:title" content=".Net 反编译与编译">
+<meta property="og:url" content="https://xxxxnnxxxx.github.io/2023/08/17/dotNet%E7%BC%96%E8%AF%91%E4%B8%8E%E5%8F%8D%E7%BC%96%E8%AF%91/index.html">
 <meta property="og:site_name" content="xxxxnnxxxx">
-<meta property="og:description" content="PlayStation开发第一篇，主要是介绍如何搭建开发环境">
+<meta property="og:description" content="简单的一个.Net的程序反编译与编译过程">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/08/04/PlayStation%20%E5%BC%80%E5%8F%91%20-%20%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%AE%89%E8%A3%85%20PSY-Q/psyq_logo.png">
-<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/08/04/PlayStation%20%E5%BC%80%E5%8F%91%20-%20%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%AE%89%E8%A3%85%20PSY-Q/snblue2.png">
-<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/08/04/PlayStation%20%E5%BC%80%E5%8F%91%20-%20%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%AE%89%E8%A3%85%20PSY-Q/PSPATHS.png">
-<meta property="article:published_time" content="2023-08-04T14:48:00.000Z">
-<meta property="article:modified_time" content="2023-08-04T14:49:40.347Z">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/08/17/dotNet%E7%BC%96%E8%AF%91%E4%B8%8E%E5%8F%8D%E7%BC%96%E8%AF%91/ildasm_1.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/08/17/dotNet%E7%BC%96%E8%AF%91%E4%B8%8E%E5%8F%8D%E7%BC%96%E8%AF%91/ildasm_2.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/08/17/dotNet%E7%BC%96%E8%AF%91%E4%B8%8E%E5%8F%8D%E7%BC%96%E8%AF%91/ildasm_3.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/08/17/dotNet%E7%BC%96%E8%AF%91%E4%B8%8E%E5%8F%8D%E7%BC%96%E8%AF%91/compile_1.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/08/17/dotNet%E7%BC%96%E8%AF%91%E4%B8%8E%E5%8F%8D%E7%BC%96%E8%AF%91/run.png">
+<meta property="article:published_time" content="2023-08-16T17:32:00.000Z">
+<meta property="article:modified_time" content="2023-08-16T17:32:42.750Z">
 <meta property="article:author" content="xxxxnnxxxx">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://xxxxnnxxxx.github.io/2023/08/04/PlayStation%20%E5%BC%80%E5%8F%91%20-%20%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%AE%89%E8%A3%85%20PSY-Q/psyq_logo.png">
+<meta name="twitter:image" content="https://xxxxnnxxxx.github.io/2023/08/17/dotNet%E7%BC%96%E8%AF%91%E4%B8%8E%E5%8F%8D%E7%BC%96%E8%AF%91/ildasm_1.png">
   
   
   
     <meta name="google-site-verification" content="Z6SsvW3r4WIkFz1e9zkKO2f0hFIouf3dUGoW4PNdvnI" />
   
-  <title>PlayStation 开发 - 设置和安装 PSY-Q - xxxxnnxxxx</title>
+  <title>.Net 反编译与编译 - xxxxnnxxxx</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -229,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">PlayStation 开发 - 设置和安装 PSY-Q</span>
+            <span id="subtitle">.Net 反编译与编译</span>
           
         </div>
 
@@ -240,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-04 22:48" pubdate>
-          2023年8月4日 晚上
+        <time datetime="2023-08-17 01:32" pubdate>
+          2023年8月17日 凌晨
         </time>
       </span>
     
@@ -252,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          1.3k 字
         
       </span>
     
@@ -263,7 +265,7 @@
         
         
         
-          13 分钟
+          11 分钟
         
       </span>
     
@@ -300,42 +302,30 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">PlayStation 开发 - 设置和安装 PSY-Q</h1>
+            <h1 id="seo-header">.Net 反编译与编译</h1>
             
             
               <div class="markdown-body">
                 
-                <p>翻译文章：<a target="_blank" rel="noopener" href="https://www.psxdev.net/help/psyq_install.html">https://www.psxdev.net/help/psyq_install.html</a></p>
-<style>
-    .highlight {
-        background-color: rgba(233,223,0, 0.4);
-    }
-</style>
+                <p>本文通过 C# 程序举例</p>
+<p>示例代码：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><span class="hljs-keyword">using</span> System.Collections.Generic;<br><span class="hljs-keyword">using</span> System.Linq;<br><span class="hljs-keyword">using</span> System.Text;<br><span class="hljs-keyword">using</span> System.Threading.Tasks;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">test1</span><br>&#123;<br>    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            System.Console.WriteLine(<span class="hljs-string">&quot;hello,world&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<p>编译后的程序，我们可以通过 <code>ildasm.exe</code> 进行反编译，如下图：</p>
+<p><img src="/2023/08/17/dotNet%E7%BC%96%E8%AF%91%E4%B8%8E%E5%8F%8D%E7%BC%96%E8%AF%91/ildasm_1.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后在菜单 <code>File</code>-&gt; <code>Dump</code>， 如下图：</p>
+<p><img src="/2023/08/17/dotNet%E7%BC%96%E8%AF%91%E4%B8%8E%E5%8F%8D%E7%BC%96%E8%AF%91/ildasm_2.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后就可以得到文件：</p>
+<p><img src="/2023/08/17/dotNet%E7%BC%96%E8%AF%91%E4%B8%8E%E5%8F%8D%E7%BC%96%E8%AF%91/ildasm_3.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后我们打开： <code>tttt.il</code>, 然后找到字符串 <code>hello,world</code> 修改成：<code>okddddddddd</code>, 如下图：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-comment">// =============== CLASS MEMBERS DECLARATION ===================</span><br><br><span class="hljs-selector-class">.class</span> private auto ansi beforefieldinit test2<span class="hljs-selector-class">.Program</span><br>       extends <span class="hljs-selector-attr">[mscorlib]</span>System<span class="hljs-selector-class">.Object</span><br>&#123;<br>  <span class="hljs-selector-class">.method</span> private hidebysig static void  <span class="hljs-built_in">Main</span>(string<span class="hljs-selector-attr">[]</span> args) cil managed<br>  &#123;<br>    <span class="hljs-selector-class">.entrypoint</span><br>    <span class="hljs-comment">// Code size       13 (0xd)</span><br>    <span class="hljs-selector-class">.maxstack</span>  <span class="hljs-number">8</span><br>    IL_0000:  nop<br>    IL_0001:  ldstr      <span class="hljs-string">&quot;okddddddddd&quot;</span><br>    IL_0006:  call       valuetype <span class="hljs-selector-attr">[System.Windows.Forms]</span>System<span class="hljs-selector-class">.Windows</span><span class="hljs-selector-class">.Forms</span><span class="hljs-selector-class">.DialogResult</span> <span class="hljs-selector-attr">[System.Windows.Forms]</span>System<span class="hljs-selector-class">.Windows</span><span class="hljs-selector-class">.Forms</span><span class="hljs-selector-class">.MessageBox</span>::<span class="hljs-built_in">Show</span>(string)<br>    IL_000b:  pop<br>    IL_000c:  ret<br>  &#125; <span class="hljs-comment">// end of method Program::Main</span><br><br>  <span class="hljs-selector-class">.method</span> public hidebysig specialname rtspecialname <br>          instance void  <span class="hljs-selector-class">.ctor</span>() cil managed<br>  &#123;<br>    <span class="hljs-comment">// Code size       8 (0x8)</span><br>    <span class="hljs-selector-class">.maxstack</span>  <span class="hljs-number">8</span><br>    IL_0000:  ldarg.<span class="hljs-number">0</span><br>    IL_0001:  call       instance void <span class="hljs-selector-attr">[mscorlib]</span>System<span class="hljs-selector-class">.Object</span>::<span class="hljs-selector-class">.ctor</span>()<br>    IL_0006:  nop<br>    IL_0007:  ret<br>  &#125; <span class="hljs-comment">// end of method Program::.ctor</span><br><br>&#125; <span class="hljs-comment">// end of class test2.Program</span><br></code></pre></td></tr></table></figure>
 
-<div align="center">
-<img src="./psyq_logo.png" srcset="/img/loading.gif" lazyload height="157px" width="109px">
-<img src="./snblue2.png" srcset="/img/loading.gif" lazyload height="157px" width="109px">
-<br>
-<span class="header2">PSY-Q 由 SN Systems Ltd 和 Psygnosis 打造</span>
-<br>
-<br>
-</div>
-
-<p>本教程将教您如何为 PlayStation 1（PSX、PS1 &#x2F; PSone）设置和安装 Psy-Q。</p>
-<h2 id="什么是-Psy-Q"><a href="#什么是-Psy-Q" class="headerlink" title="什么是 Psy-Q?"></a>什么是 Psy-Q?</h2><p>Psy-Q 是由 SN Systems Limited 和 Psygnosis 创建的 SDK。SDK 附带手册、文档、光盘、软盘、蓝色并行适配器和用于与 Playstation 1 进行通信链接的 SCSI ISA 接口（黄色）卡。该 SDK 后来被破解并发布到互联网上，许多爱好者在 PlayStation 上创建了自己的游戏和应用程序。它是游戏开发者用来创建游戏的官方索尼 SDK。</p>
-<p>让我们开始吧。首先，您需要点击此处下载 <a target="_blank" rel="noopener" href="http://psxdev.net/downloads.html">PSY-Q SDK</a>。</p>
-<p><span class="highlight">请注意</span>，请记住 Psy-Q 只能在 Windows 32 位操作系统上运行。 Psy-Q 根本无法在 Windows 64 位版本下工作，即使您确实设法使其工作，您所需的工具也无法正确运行。</p>
-<p>Psy-Q 最初是为 Windows 3.1 设计的，索尼不断更新它，以便与 Windows 95 和 98 更加兼容。早期开发人员当时使用 Windows 95 来制作 PlayStation 1 游戏，但 Windows 98 或 XP 将是相当于在 Windows NT 和 95 上使用的更新版本。</p>
-<p>如果您因使用 64 位操作系统而感到困惑或困惑，请按照本教程了解如何设置和使用我们预先配置的 Windows XP 磁盘映像以在 Microsoft 的 Virtual PC 中使用。您无需设置 Psy-Q，因为它已经预先配置并准备就绪。</p>
-<p>除此之外，下一步是将 Psy-Q 解压到您的“<code>C:\</code>”目录（根目录）。提取后，结构将为“<code>C:\psyq\...</code>”。</p>
-<p><span class="highlight">注意</span>：如果您不调用目录“psyq”（建议您不要将其从“psyq”更改），那么您将需要编辑 PSPATHS.BAT（如果您使用的是 Windows 9x），替换在下图具有正确的目录名称。如果您使用的是 Windows XP 及更高版本，则需要编辑环境变量（如下所述）。</p>
-<p><img src="/2023/08/04/PlayStation%20%E5%BC%80%E5%8F%91%20-%20%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%AE%89%E8%A3%85%20PSY-Q/PSPATHS.png" srcset="/img/loading.gif" lazyload></p>
-<p>解压后，您将在“<code>C:\psyq\</code>”下看到：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-number">3</span><span class="hljs-variable">rdParty</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">addons</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">beta</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">bin</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">cdemu</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">cdgen</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">DOCS</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">include</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">kanji</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">lib</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">opm</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">PA</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">psx</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">psxgraph</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">psyq</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">zips</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">PSPATHS</span><span class="hljs-operator">.</span><span class="hljs-variable">BAT</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">PSXICON</span><span class="hljs-operator">.</span><span class="hljs-variable">ICO</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">README</span><span class="hljs-operator">.</span><span class="hljs-built_in">PDF</span><br><span class="hljs-built_in">C</span><span class="hljs-operator">:</span>\<span class="hljs-variable">psyq</span>\<span class="hljs-variable">README</span><span class="hljs-operator">.</span><span class="hljs-variable">TXT</span><br></code></pre></td></tr></table></figure>
-<p>如果您有Windows 95、98、ME等，则需要在启动时使用AUTOEXEC.BAT来调用PSPATH.BAT 将此行添加到 <code>AUTOEXEC.BAT</code> 文件（位于“<code>C:\</code>”目录中）“<code>CALL C:\psyq\PSPATHS.BAT</code>”。</p>
-<p>但是，如果您使用的是 Windows XP、Vista、7 等，则需要将变量添加到“环境变量”列表中，如<a target="_blank" rel="noopener" href="http://psxdev.net/forum/viewtopic.php?f=49&t=206">此处</a>所述。建议运行注册表文件，以便自动为您添加环境变量。</p>
-<p>恭喜！您现在已经安装了 PSY-Q，并且可以制作 PlayStation 1 游戏了。 您现在可以通过阅读<a target="_blank" rel="noopener" href="http://psxdev.net/help/psyq_hello_world.html">此处</a>来制作“<code>Hello World</code>”程序。</p>
+<p>然后通过 <code>ilasm.exe</code> 把代码编译成程序， 如下命令：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">ilasm.<span class="hljs-keyword">exe</span> /resource=tttt.<span class="hljs-keyword">res</span> tttt.<span class="hljs-keyword">il</span><br></code></pre></td></tr></table></figure>
+<p>如下图：</p>
+<p><img src="/2023/08/17/dotNet%E7%BC%96%E8%AF%91%E4%B8%8E%E5%8F%8D%E7%BC%96%E8%AF%91/compile_1.png" srcset="/img/loading.gif" lazyload></p>
+<p>完成后，得到程序：<code>tttt.exe</code>, 然后运行，我们可以看到：</p>
+<p><img src="/2023/08/17/dotNet%E7%BC%96%E8%AF%91%E4%B8%8E%E5%8F%8D%E7%BC%96%E8%AF%91/run.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -354,7 +344,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/PlayStation-%E5%BC%80%E5%8F%91/" class="category-chain-item">PlayStation 开发</a>
+  <a href="/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/" class="category-chain-item">杂七杂八</a>
   
   
 
@@ -374,8 +364,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>PlayStation 开发 - 设置和安装 PSY-Q</div>
-      <div>https://xxxxnnxxxx.github.io/2023/08/04/PlayStation 开发 - 设置和安装 PSY-Q/</div>
+      <div>.Net 反编译与编译</div>
+      <div>https://xxxxnnxxxx.github.io/2023/08/17/dotNet编译与反编译/</div>
     </div>
     <div class="license-meta">
       
@@ -387,7 +377,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月4日</div>
+          <div>2023年8月17日</div>
         </div>
       
       
@@ -419,18 +409,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/17/dotNet%E7%BC%96%E8%AF%91%E4%B8%8E%E5%8F%8D%E7%BC%96%E8%AF%91/" title=".Net 反编译与编译">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">.Net 反编译与编译</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/07/19/What&#39;s%20the%20SafeSEH/" title="什么是 SafeSEH ?">
-                        <span class="hidden-mobile">什么是 SafeSEH ?</span>
+                      <a href="/2023/08/04/PlayStation%20%E5%BC%80%E5%8F%91%20-%20%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%AE%89%E8%A3%85%20PSY-Q/" title="PlayStation 开发 - 设置和安装 PSY-Q">
+                        <span class="hidden-mobile">PlayStation 开发 - 设置和安装 PSY-Q</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
