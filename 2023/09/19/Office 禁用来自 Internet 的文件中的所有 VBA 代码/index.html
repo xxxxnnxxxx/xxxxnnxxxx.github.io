@@ -1,0 +1,703 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/images/favicon-48.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xxxxnnxxxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="翻译文章， Office to Disable All VBA Code in Files from the Internet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Office 禁用来自 Internet 的文件中的所有 VBA 代码">
+<meta property="og:url" content="https://xxxxnnxxxx.github.io/2023/09/19/Office%20%E7%A6%81%E7%94%A8%E6%9D%A5%E8%87%AA%20Internet%20%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%20VBA%20%E4%BB%A3%E7%A0%81/index.html">
+<meta property="og:site_name" content="xxxxnnxxxx">
+<meta property="og:description" content="翻译文章， Office to Disable All VBA Code in Files from the Internet">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/09/19/Office%20%E7%A6%81%E7%94%A8%E6%9D%A5%E8%87%AA%20Internet%20%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%20VBA%20%E4%BB%A3%E7%A0%81/image-46.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/09/19/Office%20%E7%A6%81%E7%94%A8%E6%9D%A5%E8%87%AA%20Internet%20%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%20VBA%20%E4%BB%A3%E7%A0%81/image-48.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/09/19/Office%20%E7%A6%81%E7%94%A8%E6%9D%A5%E8%87%AA%20Internet%20%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%20VBA%20%E4%BB%A3%E7%A0%81/image-49.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/09/19/Office%20%E7%A6%81%E7%94%A8%E6%9D%A5%E8%87%AA%20Internet%20%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%20VBA%20%E4%BB%A3%E7%A0%81/image-50.png">
+<meta property="og:image" content="https://xxxxnnxxxx.github.io/2023/09/19/Office%20%E7%A6%81%E7%94%A8%E6%9D%A5%E8%87%AA%20Internet%20%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%20VBA%20%E4%BB%A3%E7%A0%81/image-51.png">
+<meta property="article:published_time" content="2023-09-19T01:30:00.000Z">
+<meta property="article:modified_time" content="2023-09-19T01:31:09.974Z">
+<meta property="article:author" content="xxxxnnxxxx">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xxxxnnxxxx.github.io/2023/09/19/Office%20%E7%A6%81%E7%94%A8%E6%9D%A5%E8%87%AA%20Internet%20%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%20VBA%20%E4%BB%A3%E7%A0%81/image-46.png">
+  
+  
+  
+    <meta name="google-site-verification" content="Z6SsvW3r4WIkFz1e9zkKO2f0hFIouf3dUGoW4PNdvnI" />
+  
+  <title>Office 禁用来自 Internet 的文件中的所有 VBA 代码 - xxxxnnxxxx</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xxxxnnxxxx.github.io","root":"/","version":"1.9.5-a","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xxxxnnxxxx</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">Office 禁用来自 Internet 的文件中的所有 VBA 代码</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-19 09:30" pubdate>
+          2023年9月19日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Office 禁用来自 Internet 的文件中的所有 VBA 代码</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>原文: <a target="_blank" rel="noopener" href="https://nolongerset.com/motw-blocks-all-vba/">Office to Disable All VBA Code in Files from the Internet</a></p>
+<p>Microsoft 宣布即将对其处理从 Internet 下载的 Office 应用程序（包括 Access 应用程序）中的代码的方式进行更改。</p>
+<p>从将于 2022 年 4 月上旬发布的版本 2203 开始​​，如果文件是从互联网或其他不受信任的来源下载的，VBA 代码将自动禁用，无需手动覆盖选项。目前，用户可以选择在启动时启用这些宏。</p>
+<h1 id="当前处理方式"><a href="#当前处理方式" class="headerlink" title="当前处理方式"></a>当前处理方式</h1><p>如果您尝试运行从 Internet 下载的 Access 文件，您当前会看到以下内容：</p>
+<p><img src="/2023/09/19/Office%20%E7%A6%81%E7%94%A8%E6%9D%A5%E8%87%AA%20Internet%20%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%20VBA%20%E4%BB%A3%E7%A0%81/image-46.png" srcset="/img/loading.gif" lazyload></p>
+<p>如您所见，只需单击<code>[Enable Content]</code>按钮即可绕过安全限制。</p>
+<h1 id="以后的处理方式"><a href="#以后的处理方式" class="headerlink" title="以后的处理方式"></a>以后的处理方式</h1><p>从 4 月份的新更新开始，上述警告将替换为以下消息。</p>
+<p><img src="/2023/09/19/Office%20%E7%A6%81%E7%94%A8%E6%9D%A5%E8%87%AA%20Internet%20%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%20VBA%20%E4%BB%A3%E7%A0%81/image-48.png" srcset="/img/loading.gif" lazyload></p>
+<p>请注意，没有覆盖按钮。 “了解更多”按钮将带您进入以下网页：<a target="_blank" rel="noopener" href="https://support.microsoft.com/en-us/topic/a-potentially-dangerous-macro-has-been-blocked-0952faa0-37e7-4316-b61d-5b5ed6024216">潜在危险的宏已被阻止</a>。</p>
+<h1 id="网络标记"><a href="#网络标记" class="headerlink" title="网络标记"></a>网络标记</h1><p>触发此警告的部分原因是下载文件的属性中存在所谓的“网络标记”(MOTW)。这是当您右键单击下载的文件并查看其“属性”对话框时看到的复选框：</p>
+<p><img src="/2023/09/19/Office%20%E7%A6%81%E7%94%A8%E6%9D%A5%E8%87%AA%20Internet%20%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%20VBA%20%E4%BB%A3%E7%A0%81/image-49.png" srcset="/img/loading.gif" lazyload></p>
+<p>要删除 MOTW，请选中上面对话框窗口中的“取消阻止”框，然后单击 <code>[确定]</code> 或 <code>[应用]</code>。</p>
+<h1 id="Office-宏安全流程图"><a href="#Office-宏安全流程图" class="headerlink" title="Office 宏安全流程图"></a>Office 宏安全流程图</h1><p>Microsoft 提供了一个<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/DeployOffice/security/internet-macros-blocked#how-office-determines-whether-to-run-macros-in-files-from-the-internet">方便的流程图</a>，演示 Office 应用程序如何决定是阻止还是启用宏（即 VBA 代码）。</p>
+<p><img src="/2023/09/19/Office%20%E7%A6%81%E7%94%A8%E6%9D%A5%E8%87%AA%20Internet%20%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%20VBA%20%E4%BB%A3%E7%A0%81/image-50.png" srcset="/img/loading.gif" lazyload></p>
+<pre><code class="hljs">注意：
+Windows 向来自不受信任位置（例如 Internet 或限制区域）的文件添加 Web 标记 (MOTW) 属性。该属性仅适用于保存在 NTFS 文件系统上的文件，不适用于保存在 FAT32 格式设备上的文件。
+</code></pre>
+<h1 id="绕过新限制"><a href="#绕过新限制" class="headerlink" title="绕过新限制"></a>绕过新限制</h1><p>有几种方法可以解决此问题：</p>
+<h2 id="去除网络标记"><a href="#去除网络标记" class="headerlink" title="去除网络标记"></a>去除网络标记</h2><p>如上所述，此方法需要在打开下载的文件之前对其进行修改。有关“解锁”下载文件的详细说明，请参阅上面的“网络标记”部分。</p>
+<p>用户第一次打开未阻止的文件时仍会看到黄色的“安全警告”横幅。如果他们单击 <code>[Enable Content]</code> 按钮，文件位置将保存为受信任文档，并且所有 VBA 代码将从该点开始工作。</p>
+<h2 id="从受信任的文件夹运行访问应用程序"><a href="#从受信任的文件夹运行访问应用程序" class="headerlink" title="从受信任的文件夹运行访问应用程序"></a>从受信任的文件夹运行访问应用程序</h2><p>这是首选方法，但它要求您有某种方法在用户设备上设置受信任的文件夹。</p>
+<h3 id="通过访问用户界面添加受信任位置"><a href="#通过访问用户界面添加受信任位置" class="headerlink" title="通过访问用户界面添加受信任位置"></a>通过访问用户界面添加受信任位置</h3><p>如果用户拥有完整版本的 Access，则可以通过文件 &gt; <code>选项</code> &gt; <code>信任中心</code> &gt; <code>[信任中心设置...]</code> &gt; <code>受信任位置</code> &gt; <code>[添加新位置...]</code> 来执行此操作。通过 Access 用户界面添加的可信位置存储在 Windows 注册表的用户配置文件部分（即 HKCU 配置单元）</p>
+<p>这些位置显示为以下注册表项下的子项（“16.0”是 Office 2016+ 的版本号，早期版本将有不同的编号）</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\<span class="hljs-number">16.0</span>\<span class="hljs-keyword">Access</span>\<span class="hljs-keyword">Security</span>\<span class="hljs-keyword">Trusted</span> Locations<br></code></pre></td></tr></table></figure>
+
+<h3 id="通过安装程序添加受信任位置"><a href="#通过安装程序添加受信任位置" class="headerlink" title="通过安装程序添加受信任位置"></a>通过安装程序添加受信任位置</h3><p>如果您使用某种安装程序（例如 Inno Setup）分发应用程序，则可以将受信任位置设置为安装过程的一部分。</p>
+<p>然而，HKCU 配置单元的问题在于它与当前用户的配置文件相关联。如果您的应用程序是通过与最终用户帐户分开的管理员帐户安装的，那么当最终用户启动您的应用程序时，对 HKCU 注册表配置单元所做的任何条目都将毫无意义。这是因为受信任位置将与管理员的用户配置文件关联，而不是与最终用户的配置文件关联。</p>
+<p>幸运的是，您可以在 HKLM 配置单元中设置一个计算机范围的可信位置注册表项。这允许您作为开发人员将其构建到您的安装程序中，作为应用程序设置过程的一部分。</p>
+<p>我将在另一篇文章中编写更详细的说明，但现在只需知道您需要将受信任位置创建为以下注册表项的子项：</p>
+ <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Office\<span class="hljs-number">16.0</span>\<span class="hljs-keyword">Access</span>\<span class="hljs-keyword">Security</span>\<span class="hljs-keyword">Trusted</span> Locations<br></code></pre></td></tr></table></figure>
+
+<p> 请注意，您需要将“16.0”替换为您的 Access 版本，并且可能根本不需要“WOW6432Node”密钥。这是一个示例：</p>
+<p> <img src="/2023/09/19/Office%20%E7%A6%81%E7%94%A8%E6%9D%A5%E8%87%AA%20Internet%20%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%20VBA%20%E4%BB%A3%E7%A0%81/image-51.png" srcset="/img/loading.gif" lazyload></p>
+<p> 唯一必需的值是 “<code>Path</code>”。</p>
+<h3 id="对您的-VBA-项目进行数字签名"><a href="#对您的-VBA-项目进行数字签名" class="headerlink" title="对您的 VBA 项目进行数字签名"></a>对您的 VBA 项目进行数字签名</h3><p> 为了完整性，我包含此选项，但我不推荐它。</p>
+<p> 正如您从上面的流程图中看到的，避免宏警告的一种方法是使用受信任的发布者的证书对您的应用程序进行数字签名。这种方法涉及许多步骤。</p>
+<ol>
+<li><p>购买代码签名证书（几百美元）或创建自签名证书</p>
+</li>
+<li><p>签署VBA项目</p>
+</li>
+<li><p>验证证书发布者是否在最终用户的计算机上注册为“受信任的发布者”（我相信即使使用商业代码签名证书，这也是必要的）</p>
+</li>
+</ol>
+<p> 有很多陷阱。在上述任何一个阶段都很容易搬起石头砸自己的脚。如果您走这条路，请做好经常遭受挫折的准备。</p>
+<p> 不管怎样，我多年来一直为商业代码签名证书付费。但是，我只用它来签署我的安装包，而不是我的 VBA 代码项目。</p>
+<h1 id="附加参考"><a href="#附加参考" class="headerlink" title="附加参考"></a>附加参考</h1><ol>
+<li><p>Macros from the internet will be blocked by default in Office <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/DeployOffice/security/internet-macros-blocked">https://learn.microsoft.com/en-us/DeployOffice/security/internet-macros-blocked</a></p>
+</li>
+<li><p>Details about the Mark-of-the-Web (MOTW)  <a target="_blank" rel="noopener" href="https://nolongerset.com/mark-of-the-web-details/">https://nolongerset.com/mark-of-the-web-details/</a></p>
+</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Windows/" class="category-chain-item">Windows</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Office 禁用来自 Internet 的文件中的所有 VBA 代码</div>
+      <div>https://xxxxnnxxxx.github.io/2023/09/19/Office 禁用来自 Internet 的文件中的所有 VBA 代码/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xxxxnnxxxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年9月19日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/09/17/CVE-2023-38146/" title="CVE-2023-38146：通过 Windows 主题执行任意代码">
+                        <span class="hidden-mobile">CVE-2023-38146：通过 Windows 主题执行任意代码</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
